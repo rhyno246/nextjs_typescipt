@@ -1,7 +1,6 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Menu from '../components/menu'
-
+import type { NextPage } from "next";
+import Head from "next/head";
+import Menu from "../components/Menu";
 const Home: NextPage = () => {
   return (
     <div className="bg-black h-screen">
@@ -12,10 +11,10 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <Menu/>
+        <Menu />
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
