@@ -1,7 +1,15 @@
-import type { NextPage } from "next";
 import Head from "next/head";
+import Banner from "../components/Banner";
 import Header from "../components/Header";
-const Home: NextPage = () => {
+import { Movie } from "../typings";
+import requests from "../utils/requests";
+
+interface Props {
+  trendingNow: Movie[];
+}
+
+const Home = ({ trendingNow }: Props) => {
+  console.log(trendingNow);
   return (
     <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511]">
       <Head>
@@ -10,9 +18,24 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main></main>
+      <main>
+        <Banner />
+      </main>
     </div>
   );
 };
 
 export default Home;
+
+export const getServerSideProps = async () => {
+  const [trendingNow, topReted] = await Promise.all([
+    fetch(requests.fetchTrending).then((res) => res.json()),
+    fetch(requests.fetchTopRated).then((res) => res.json()),
+  ]);
+  return {
+    props: {
+      trendingNow: trendingNow.results,
+      topReted: topReted.results,
+    },
+  };
+};
