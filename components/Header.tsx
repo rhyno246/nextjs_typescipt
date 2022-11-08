@@ -35,31 +35,43 @@ const Header = () => {
         isScrolled && "bg-[#141414]"
       }`}
     >
-      <div className="logo">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1280px-Netflix_2015_logo.svg.png"
-          width={130}
-          height={130}
-        />
+      <div className="main-menu flex items-center">
+        <div className="logo mr-10">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1280px-Netflix_2015_logo.svg.png"
+            width={130}
+            height={130}
+          />
+        </div>
+
+        <div className="menu">
+          <button className="block md:hidden">
+            <Bars4Icon className="h-6 w-6" />
+          </button>
+
+          <ul className="hidden md:flex">
+            <IconMenu icon={HomeIcon} label="Home" />
+            <IconMenu icon={TvIcon} label="TV Shows" />
+            <IconMenu icon={FilmIcon} label="Movies" />
+            <IconMenu icon={BookOpenIcon} label="New & Popular" />
+            <IconMenu icon={QueueListIcon} label="My List" />
+          </ul>
+        </div>
       </div>
-
-      <button className="block md:hidden">
-        <Bars4Icon className="h-6 w-6" />
-      </button>
-
-      <ul className="hidden md:flex">
-        <IconMenu icon={HomeIcon} label="Home" />
-        <IconMenu icon={TvIcon} label="TV Shows" />
-        <IconMenu icon={FilmIcon} label="Movies" />
-        <IconMenu icon={BookOpenIcon} label="New & Popular" />
-        <IconMenu icon={QueueListIcon} label="My List" />
-      </ul>
 
       <div className="search flex items-center space-x-4 text-sm font-light">
         <MagnifyingGlassIcon className="h-6 w-6 " />
-        <p className="hidden lg:inline ">Kids</p>
         <BellIcon className="h-6 w-6 " />
-        <Link href="/account">dsaasd</Link>
+        <p className="hidden lg:inline ">Kids</p>
+        <Link href="/account">
+          <img
+            src="https://i1.sndcdn.com/avatars-FaXTi2nKMpRrilmF-dtOgag-t240x240.jpg"
+            alt=""
+            className="cursor-pointer rounded"
+            width={30}
+            height={30}
+          />
+        </Link>
       </div>
     </header>
   );
